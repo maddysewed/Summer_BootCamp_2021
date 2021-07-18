@@ -1,7 +1,7 @@
 import telebot
 import random
 from telebot import types
-client = telebot.TeleBot('my_token')   
+client = telebot.TeleBot('1839508249:AAFx34PDwerE9_Ge81jHZvl-3XPNrB_9MW4')   
 @client.message_handler(content_types=['text'])
 
 @client.message_handler(commands=['/hi'])
@@ -29,13 +29,13 @@ def start(message):
 
 def user_letter(message):
     line = ''
-    with open('times.txt') as inf:
+    with open('c:\\Users\\H P\\Desktop\\Bot\\times.txt') as inf:
         for line in inf:
             line = line.strip()
     times = int(line)
     i = j = k = 0
     letter = message.text       
-    if times < 10:  
+    if times <= 10:  
         if letter.isalpha() and len(letter) == 1:
             letter = letter.lower()   
             cnt = []   
@@ -55,7 +55,7 @@ def user_letter(message):
                     client.send_message(message.from_user.id, '\nEnter a letter - ')
                     client.register_next_step_handler(message, user_letter)
                 times += 1
-                update_times = open('times.txt', 'w')
+                update_times = open('c:\\Users\\H P\\Desktop\\Bot\\times.txt', 'w')
                 update_times.write(str(times))
                 update_times.close()
             else:
@@ -65,27 +65,28 @@ def user_letter(message):
                     client.send_message(message.from_user.id, '\nEnter a letter - ')
                     client.register_next_step_handler(message, user_letter)
                 times += 1
-                update_times = open('times.txt', 'w')
+                update_times = open('c:\\Users\\H P\\Desktop\\Bot\\times.txt', 'w')
                 update_times.write(str(times))
                 update_times.close()
             if b == a:
                 client.send_message(message.from_user.id,'\nGOOD JOB')
-                ouf = open('times.txt', 'w')
+                ouf = open('c:\\Users\\H P\\Desktop\\Bot\\times.txt', 'w')
                 ouf.write('1')
                 ouf.close()
                 times = 0
-                client.send_message(message.from_user.id,'\nText any key to play again!')
-            if times == 10 and b != a:
-                client.send_message(message.from_user.id,'\nFalure =(\nThe right word was:')
+                sent = client.send_message(message.from_user.id,'\nText any key to play again!')
+                client.register_next_step_handler(sent,hi)
+            if times > 10 and b != a:
                 c = ''
                 for j in a:
                     c += j
-                client.send_message(message.from_user.id, c)
-                ouf = open('times.txt', 'w')
+                client.send_message(message.from_user.id,'\nFalure =(\nThe right word was: ' + c)
+                ouf = open('c:\\Users\\H P\\Desktop\\Bot\\times.txt', 'w')
                 ouf.write('1')
                 ouf.close()
                 times = 0
-                client.send_message(message.from_user.id,'\nText any key to play again!')
+                sent = client.send_message(message.from_user.id,'\nText any key to play again!')
+                client.register_next_step_handler(sent,hi)
         else:
             client.send_message(message.from_user.id, 'Incorrect input. Text any key to replay')
               
