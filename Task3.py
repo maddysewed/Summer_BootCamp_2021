@@ -77,8 +77,10 @@ def user_letter(message):
                 client.send_message(message.from_user.id,'\nText any key to play again!')
             if times == 10 and b != a:
                 client.send_message(message.from_user.id,'\nFalure =(\nThe right word was:')
+                c = ''
                 for j in a:
-                    client.send_message(message.from_user.id, j)
+                    c += j
+                client.send_message(message.from_user.id, c)
                 ouf = open('times.txt', 'w')
                 ouf.write('1')
                 ouf.close()
