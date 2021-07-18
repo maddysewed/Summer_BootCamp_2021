@@ -25,7 +25,7 @@ def start(message):
             i += 1
         client.send_message(message.from_user.id, msg)
         times = 0
-        sent = client.send_message(message.from_user.id, '\nEnter a letter')
+        sent = client.send_message(message.from_user.id, '\nEnter a letter - ')
         client.register_next_step_handler(sent, user_letter) 
 
 def user_letter(message):
