@@ -84,7 +84,7 @@ def user_letter(message):
                 ouf.write('1')
                 ouf.close()
                 times = 0
-                client.send_message(message.from_user.id,'\nText /hi to play again!')
+                client.send_message(message.from_user.id,'\nText any key to play again!')
         else:
             client.send_message(message.from_user.id, 'Incorrect input. Text any key to replay')
               
