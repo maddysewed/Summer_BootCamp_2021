@@ -19,8 +19,7 @@ for times in range(10):
             k += 1
         for cnt[j] in cnt:
             b[int(cnt[j])] = letter
-        for j in b:
-            print(j, end = ' ')
+        print(*b)
         if b == a:
             print('\nGOOD JOB')
             break
@@ -28,6 +27,5 @@ for times in range(10):
         print('There is no ' + letter)
     times += 1
 if times == 10 and b != a:
-    print('\nFalure =(\n The right word was:', end = ' ')
-    for j in a:
-        print(j, end = '')
+    print('\nFalure =(\nThe right word was:', end = ' ')
+    print(*a)
